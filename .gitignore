@@ -1,0 +1,5 @@
+.direnv
+node_modules
+dist
+public/*.wasm
+.vscode

@@ -1,0 +1,31 @@
+{
+  "name": "treesearch",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "wasm": "[ -e \"public/tree-sitter.wasm\" ] && echo \"tree-sitter.wasm already linked\" || ln node_modules/web-tree-sitter/tree-sitter.wasm public/",
+    "dev": "vite",
+    "build": "pnpm wasm && tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@solid-primitives/upload": "^0.0.114",
+    "solid-js": "^1.7.8",
+    "web-tree-sitter": "^0.20.8"
+  },
+  "devDependencies": {
+    "@picocss/pico": "^1.5.10",
+    "@types/node": "^20.5.1",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "^8.47.0",
+    "eslint-plugin-solid": "^0.13.0",
+    "globals": "^13.21.0",
+    "tree-sitter-c": "^0.20.6",
+    "tree-sitter-rust": "^0.20.4",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-solid": "^2.7.0"
+  }
+}

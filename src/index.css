@@ -1,0 +1,86 @@
+body > div > nav {
+  --nav-link-spacing-vertical: 1rem;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: var(--nav-background-color);
+  box-shadow: 0px 1px 0 var(--nav-border-color);
+}
+
+body > div > nav.container-fluid {
+  padding-right: calc(var(--spacing) + var(--scrollbar-width, 0px));
+}
+
+body > div > nav a {
+  border-radius: 0;
+}
+
+body > div > nav svg {
+  vertical-align: text-bottom;
+}
+
+body > div > nav ul:first-of-type {
+  margin-left: calc(var(--spacing) * -1);
+}
+
+body > div > nav ul:first-of-type li {
+  padding: 0;
+}
+
+body > div > nav ul:first-of-type li:first-of-type a {
+  display: block;
+  margin: 0;
+  padding: 0px;
+  background: var(--h1-color);
+  color: var(--nav-logo-color);
+}
+
+body > div > nav ul:first-of-type li:first-of-type a img {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 10px;
+}
+
+body > div > nav ul:first-of-type li:nth-of-type(2) {
+  margin-left: calc(var(--spacing) * 1.5);
+  color: var(--h1-color);
+}
+
+@media (min-width: 992px) {
+  body > div > nav ul:first-of-type li:nth-of-type(2) {
+    display: inline;
+  }
+}
+
+td > code {
+  margin: 0;
+  display: block;
+  width: 100%;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+td > a > svg {
+  display: inline-block;
+  scale: 0.4;
+  cursor: pointer;
+}
+
+thead > tr > th:first-of-type {
+  width: 7%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.main {
+  padding: 30px;
+  padding-top: 100px;
+}
