@@ -12,19 +12,14 @@ import {
 import { SourceCode } from "../types";
 import Table from "./Table";
 
-// @ts-ignore
-import raylib from "/examples/raylib.h?url&raw";
-// @ts-ignore
-import stb_image from "/examples/stb_image.h?url&raw";
-
-const sourceFromUrl = async (url: string) => {
+const sourceFromUrl = async (url: string): Promise<SourceCode> => {
   const file = await fetch(url).then((res) => res.text());
-  setSourceCode({
+  return {
     name: url.split("/").pop()!,
     content: file,
     extension: url.split(".").pop()!,
     source: url,
-  });
+  };
 };
 
 const Body: Component = () => {
@@ -62,7 +57,7 @@ const Body: Component = () => {
           onClick={async () => {
             const url = prompt("Enter URL to Source File");
             if (url) {
-              sourceFromUrl(url);
+              setSourceCode(await sourceFromUrl(url));
             }
           }}
         >
@@ -92,25 +87,23 @@ const Body: Component = () => {
         fallback={
           <div class="grid">
             <button
-              onClick={() => {
-                setSourceCode({
-                  name: "raylib.h",
-                  content: raylib,
-                  extension: "h",
-                  source: "/examples/raylib.h",
-                });
+              onClick={async () => {
+                const raylib = await sourceFromUrl(
+                  "https://raw.githubusercontent.com/raysan5/raylib/master/src/raylib.h"
+                );
+                raylib.content = raylib.content.replace(/RLAPI/g, "");
+                setSourceCode(raylib);
               }}
             >
               Want an example? Try <code>raylib.h</code>
             </button>
             <button
-              onClick={() => {
-                setSourceCode({
-                  name: "stb_image.h",
-                  content: stb_image,
-                  extension: "h",
-                  source: "/examples/stb_image.h",
-                });
+              onClick={async () => {
+                const stb_image = await sourceFromUrl(
+                  "https://raw.githubusercontent.com/nothings/stb/master/stb_image.h"
+                );
+                stb_image.content = stb_image.content.replace(/STBIDEF/g, "");
+                setSourceCode(stb_image);
               }}
             >
               Or <code>stb_image.h</code>
