@@ -2,7 +2,7 @@
 
 A [hoogle.haskell.org](https://hoogle.haskell.org/) inspired code search engine that works with any typed language (only support C and Rust for now, more to come).
 
-Available at [treesearch.kothavade.com](https://treesearch.kothavade.com)!
+Live demo available at [treesearch.kothavade.com](https://treesearch.kothavade.com)!
 
 ## Usage
 
