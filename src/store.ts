@@ -4,7 +4,7 @@ import { SourceCode, Function } from "./types";
 import { extensionToLanguage } from "./language";
 
 export const [sourceCode, setSourceCode] = createSignal<SourceCode | null>(
-  null
+  null,
 );
 const [parser, setParser] = createSignal<Parser | null>(null);
 export const [filtered, setFiltered] = createSignal<Function[]>([]);
@@ -19,7 +19,7 @@ export const updateLanguage = async () => {
     const initTime = performance.now();
     setParser(await initParser());
     console.log(
-      "Initialized parser in " + (performance.now() - initTime) + "ms"
+      "Initialized parser in " + (performance.now() - initTime) + "ms",
     );
   }
   // If the source code is not set, return
@@ -37,16 +37,16 @@ export const updateLanguage = async () => {
   const matches = language.query(l.query).matches(root);
   const functions = matches.map((match) => {
     const returnType = match.captures.find(
-      (capture) => capture.name === "return_type"
+      (capture) => capture.name === "return_type",
     )?.node.text!;
     const name = match.captures.find(
-      (capture) => capture.name === "function_name"
+      (capture) => capture.name === "function_name",
     )?.node.text!;
     const parameters = match.captures
       .filter((capture) => capture.name === "parameter_type")
       .map((capture) => capture.node.text);
     const body = match.captures.find(
-      (capture) => capture.name === "function_body"
+      (capture) => capture.name === "function_body",
     )?.node.text!;
     return { returnType, name, parameters, body, showBody: false };
   });
@@ -55,7 +55,7 @@ export const updateLanguage = async () => {
       functions.length +
       " functions in " +
       (performance.now() - initTime) +
-      "ms"
+      "ms",
   );
   setAllFunctions(functions);
   // Reset the filtered functions

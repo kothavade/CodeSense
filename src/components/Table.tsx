@@ -4,7 +4,7 @@ import { Function } from "../types";
 const Table: Component = () => {
   const toggleBody = (func: Function) =>
     setFiltered((prev) =>
-      prev.map((f) => (f === func ? { ...f, showBody: !f.showBody } : f))
+      prev.map((f) => (f === func ? { ...f, showBody: !f.showBody } : f)),
     );
   return (
     <table>

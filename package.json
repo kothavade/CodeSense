@@ -7,7 +7,9 @@
     "wasm": "[ -e \"public/tree-sitter.wasm\" ] && echo \"tree-sitter.wasm already linked\" || ln node_modules/web-tree-sitter/tree-sitter.wasm public/",
     "dev": "vite",
     "build": "pnpm wasm && tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@solid-primitives/upload": "^0.0.114",
@@ -22,6 +24,7 @@
     "eslint": "^8.47.0",
     "eslint-plugin-solid": "^0.13.0",
     "globals": "^13.21.0",
+    "prettier": "^3.0.2",
     "tree-sitter-c": "^0.20.6",
     "tree-sitter-rust": "^0.20.4",
     "typescript": "^5.0.2",
