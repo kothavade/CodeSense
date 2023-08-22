@@ -16,6 +16,8 @@ Color ColorAlpha(Color color, float alpha);
 
 you can search for it by name: `colora`, or by type: `Color, float -> Color`.
 
+Searching is flexible--both `Color, float ->` and `-> Color` are valid searches, for example.
+
 ## Develop
 
 ### Using Nix
