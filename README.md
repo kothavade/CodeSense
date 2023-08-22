@@ -1,10 +1,12 @@
-# Treesearch
+# 🌳🔍 treesearch
 
 A [hoogle.haskell.org](https://hoogle.haskell.org/) inspired code search engine that works with any typed language (only support C and Rust for now, more to come).
 
+Available at [treesearch.kothavade.com](https://treesearch.kothavade.com)!
+
 ## Usage
 
-Upload a `.c`, `.h` or `.rs` file, paste a link to **raw** source code (eg. raw.githubusercontent.com), or select one of the examples provided.
+Upload a `.c`, `.h` or `.rs` file, paste a link to **raw** source code (eg. a raw.githubusercontent.com link), or select one of the examples provided.
 
 Then, search for a function by name, or by parameter types and return type--for example, if you want to find this function from `raylib.h`:
 
@@ -14,7 +16,7 @@ Color ColorAlpha(Color color, float alpha);
 
 you can search for it by name: `colora`, or by type: `Color, float -> Color`.
 
-## Dev
+## Develop
 
 ### Using Nix
 
@@ -27,10 +29,12 @@ $ pnpm dev
 
 First, install the dependencies:
 
-- Emscripten (or Docker)
-- Tree-sitter CLI
+- [Emscripten](https://emscripten.org/docs/getting_started/downloads.html) (or [Docker](https://www.docker.com/get-started/))
+- [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/cli/README.md)
 - NodeJS 18+
-- PNPM
+- [PNPM](https://pnpm.io/installation)
+
+Then, set the node and WASM dependencies:
 
 ```sh
 $ ./build-wasm.sh # Builds language-specific WASM binaries
