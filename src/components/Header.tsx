@@ -7,12 +7,12 @@ const Header: Component = () => (
     <ul>
       <li>
         <a href="#">
-          <img src={logo} alt="treesearch" />
+          <img src={logo} alt="codesense" />
         </a>
       </li>
-      <Show when={sourceCode() !== null} fallback={<li>treesearch</li>}>
+      <Show when={sourceCode() !== null} fallback={<li>CodeSense</li>}>
         <li>
-          treesearch:{" "}
+          CodeSense:{" "}
           <a href={sourceCode()!.source} target="_blank">
             {sourceCode()!.name}
           </a>
@@ -22,7 +22,7 @@ const Header: Component = () => (
     <ul>
       <li>
         <a
-          href="https://github.com/vedkothavade/treesearch"
+          href="https://github.com/kothavade/CodeSense"
           class="contrast"
           target="_blank"
         >
