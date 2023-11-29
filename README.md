@@ -6,7 +6,7 @@ Live demo available at [codesense.kothavade.com](https://codesense.kothavade.com
 
 ## Writeup
 
-I wrote more about this on my site: <https://www.kothavade.com/projects/codesense>
+I wrote more about this on my site: <https://www.kothavade.com/posts/codesense>
 
 ## Usage
 
