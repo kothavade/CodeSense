@@ -1,11 +1,13 @@
 > [!IMPORTANT]
 > There is a Next.js/React rewrite in progress, in the [`rewrite`](https://github.com/kothavade/CodeSense/tree/rewrite) branch.
+> 
+> You can access the current version of this rewrite at [codesense.kothavade.com](https://codesense.kothavade.com)
 
 # 👨‍💻🔍 CodeSense
 
 A [hoogle.haskell.org](https://hoogle.haskell.org/) inspired code search engine that works with any typed language (only support C and Rust for now, more to come).
 
-Live demo available at [codesense.kothavade.com](https://codesense.kothavade.com)!
+Live demo available at [codesense-v1.kothavade.com](https://codesense-v1.kothavade.com)!
 
 ## Writeup
 
