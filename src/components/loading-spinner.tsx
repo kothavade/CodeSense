@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
-import React, { SVGProps } from "react";
+import React, { LegacyRef, SVGProps } from "react";
 
-export default function BarsRotateFade({
+export default function LoadingSpinner({
   width = 15,
   height = 15,
   dur = "0.75s",
@@ -10,6 +10,7 @@ export default function BarsRotateFade({
   const { theme } = useTheme();
   const color = theme === "dark" ? "white" : "black";
   return (
+    // @ts-expect-error svg weirdness
     <svg
       width={width}
       height={height}
