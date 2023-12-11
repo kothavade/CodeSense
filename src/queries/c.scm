@@ -7,6 +7,7 @@
                 (
                     (parameter_declaration
                         type: _ @parameter_type
+                        declarator: _ @parameter_name
                     )
                     ","?
                 )*
@@ -21,6 +22,7 @@
                 (
                     (parameter_declaration
                         type: _ @parameter_type
+                        declarator: _ @parameter_name
                     )
                     ","?
                 )*

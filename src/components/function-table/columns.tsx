@@ -26,8 +26,20 @@ export const columns: ColumnDef<Function>[] = [
     accessorKey: "parameters",
     header: "Parameters",
     cell: ({ row }) => {
-      // string[] -> string
-      return row.original.parameters.join(", ");
+      return (
+        <div className="flex flex-row gap-1 overflow-auto max-w-[200px] items-center scrollbar-none">
+          {row.original.parameters.map((p, idx) => (
+            <div key={idx} className="flex flex-row items-center">
+              <span className="">{p.name}</span>
+              <span className=" text-muted-foreground">:</span>
+              <span className=" text-muted-foreground">{p.type}</span>
+              {idx !== row.original.parameters.length - 1 && (
+                <span className=" text-muted-foreground">{", "}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      )
     },
     filterFn: filterFns.arrIncludesAll,
   },

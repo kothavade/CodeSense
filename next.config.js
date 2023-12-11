@@ -1,15 +1,24 @@
+// get every tree-sitter package from package.json
+const fs = require("fs");
+
+const treeSitterPackages = fs.readdirSync("node_modules").filter((name) => {
+  return name.startsWith("tree-sitter");
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverActions: true,
+    optimizeServerReact: true,
+    optimizeCss: true,
+    turbo: {
+      rules: {
+        "*.scm": ["raw-loader"],
+        "*.node": [""],
+      },
+    },
   },
   webpack: (config) => {
-    config.externals = [
-      ...config.externals,
-      "tree-sitter",
-      "tree-sitter-c",
-      "tree-sitter-rust",
-    ];
+    config.externals = [...config.externals, ...treeSitterPackages];
     config.module.rules.push({
       test: /\.scm/,
       type: "asset/source",

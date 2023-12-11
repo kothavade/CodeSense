@@ -1,24 +1,9 @@
 import type { Metadata } from "next";
-import {
-  Inter as FontSans,
-  IBM_Plex_Mono as FontMono,
-} from "next/font/google";
+import { GeistSans, GeistMono } from "geist/font";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  // weight: ["400", "700"],
-});
-
-const fontMono = FontMono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "700"],
-});
 
 export const metadata: Metadata = {
   title: "CodeSense",
@@ -36,8 +21,8 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
-          fontMono.variable
+          GeistSans.variable,
+          GeistMono.variable
         )}
       >
         <ThemeProvider

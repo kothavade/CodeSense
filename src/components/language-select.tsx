@@ -1,6 +1,6 @@
 "use client";
 
-import { SupportedLanguage, languageInfo } from "@/lib/languages";
+import { SupportedLanguage, languages } from "@/lib/languages";
 import {
   Select,
   SelectTrigger,
@@ -22,7 +22,7 @@ export default function LanguageSelect({ setLanguage }: LanguageSelectProps) {
       </SelectTrigger>
 
       <SelectContent>
-        {languageInfo.map((lang) => (
+        {Object.values(languages).map((lang) => (
           <SelectItem
             value={lang.name}
             key={lang.name}
@@ -30,7 +30,9 @@ export default function LanguageSelect({ setLanguage }: LanguageSelectProps) {
             disabled={lang?.wip}
             warn={lang?.wip}
           >
-            <span className={lang.wip ? "text-muted-foreground" : ""}>{lang.name}</span>
+            <span className={lang.wip ? "text-muted-foreground" : ""}>
+              {lang.name}
+            </span>
           </SelectItem>
         ))}
       </SelectContent>

@@ -4,4 +4,12 @@
         "tanstack"
     ],
     "eslint.experimental.useFlatConfig": false,
+    "tailwindCSS.files.exclude": [
+        "**/.git/**",
+        "**/node_modules/**",
+        "**/.hg/**",
+        "**/.svn/**",
+        "**/.direnv/**",
+        "**/.next/**",
+    ]
 }

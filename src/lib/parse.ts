@@ -1,28 +1,21 @@
 "use server";
 
 import Parser, { Query } from "tree-sitter";
-import { Function } from "@/lib/languages";
-import { getLanguage } from "@/lib/languages_server";
+import { Function, SupportedLanguage } from "@/lib/languages";
+import { languagesServer } from "@/lib/languages_server";
 import { log } from "@/lib/log";
 
 log("Creating parser");
 const parser = new Parser();
 
 export async function parse(
-  name: string,
+  name: SupportedLanguage,
   sourceCode: string
 ): Promise<Function[]> {
-  "use server";
-  const language = getLanguage(name);
-  if (!language || !language.parser) {
-    log("Language not found");
-    throw new Error("Language not found");
-  }
+  const language = languagesServer[name];
   if (parser.getLanguage() !== language.parser) {
     log("Setting language to", language.name);
     parser.setLanguage(language.parser);
-  } else {
-    log("Language already set");
   }
   const rootNode = parser.parse(sourceCode).rootNode;
   const query = new Query(language.parser, language.query);
@@ -33,9 +26,16 @@ export async function parse(
       .text!;
     const name = captures.find(({ name }) => name === "function_name")?.node
       .text!;
-    const parameters = captures
+    const parameter_types = captures
       .filter(({ name }) => name === "parameter_type")
       .map(({ node }) => node.text);
+    const parameter_names = captures
+      .filter(({ name }) => name === "parameter_name")
+      .map(({ node }) => node.text);
+    const parameters = parameter_names.map((name, index) => ({
+      name,
+      type: parameter_types[index],
+    }));
     const body = captures.find(({ name }) => name === "function_body")?.node
       .text!;
     return { key: index, returnType, name, parameters, body };

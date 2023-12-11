@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 import {
   ColumnDef,
@@ -24,17 +25,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { filterColumns } from "@/lib/filter";
+import BarsRotateFade from "../loading-spinner";
+
+const pageSize = 5;
 
 interface FunctionTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   disabled?: boolean;
+  loading: boolean;
 }
 
 export function FunctionTable<TData, TValue>({
   columns,
   data,
   disabled,
+  loading,
 }: FunctionTableProps<TData, TValue>) {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -55,23 +61,31 @@ export function FunctionTable<TData, TValue>({
 
   // TODO: Find a better way to do this.
   useEffect(() => {
-    table.setPageSize(5);
+    table.setPageSize(pageSize);
   }, [table]);
+
 
   return (
     <>
       <div className="flex items-center py-4">
-        <Input
-          disabled={disabled}
-          placeholder='Search, for example: "main", "->number[]", "int, char->string"'
-          value={search}
-          onChange={(event) => {
-            const value = event.target.value;
-            setSearch(value);
-            filterColumns(value, table);
-          }}
-          className="w-full"
-        />
+        <div className="relative flex items-center w-full">
+          {loading ? (
+            <BarsRotateFade className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+          ) : (
+            <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2" />
+          )}
+          <Input
+            disabled={disabled}
+            placeholder='Search, for example: "main", "->number[]", "int, char->string"'
+            value={search}
+            onChange={(event) => {
+              const value = event.target.value;
+              setSearch(value);
+              filterColumns(value, table);
+            }}
+            className="pl-8 w-full"
+          />
+        </div>
       </div>
       <div className="rounded-md border">
         <Table>
@@ -124,6 +138,10 @@ export function FunctionTable<TData, TValue>({
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
+        <span className="text-xs opacity-50 ">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount() || 1}
+        </span>
         <Button
           variant="outline"
           size="sm"

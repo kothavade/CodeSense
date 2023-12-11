@@ -4,22 +4,18 @@ import C from "tree-sitter-c";
 import Rust from "tree-sitter-rust";
 import c_query from "@/queries/c.scm";
 import rust_query from "@/queries/rust.scm";
-import { Language, languageInfo } from "@/lib/languages";
+import { LanguageServer, SupportedLanguage, languages } from "@/lib/languages";
 
-export const languages: Language[] = [
-  {
-    ...languageInfo[0],
+export const languagesServer: Record<SupportedLanguage, LanguageServer> = {
+  "C": {
+    ...languages["C"],
     query: c_query,
     parser: C,
   },
-  {
-    ...languageInfo[1],
+  "Rust": {
+    ...languages["Rust"],
     query: rust_query,
     parser: Rust,
     wip: true,
   },
-];
-
-export function getLanguage(name: string): Language | null {
-  return languages.find((lang) => lang.name === name) || null;
-}
+};
