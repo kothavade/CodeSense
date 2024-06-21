@@ -9,10 +9,6 @@ A [hoogle.haskell.org](https://hoogle.haskell.org/) inspired code search engine 
 
 Live demo available at [codesense-v1.kothavade.com](https://codesense-v1.kothavade.com)!
 
-## Writeup
-
-I wrote more about this on my site: <https://www.kothavade.com/posts/codesense>
-
 ## Usage
 
 Upload a `.c`, `.h` or `.rs` file, paste a link to **raw** source code (eg. a raw.githubusercontent.com link), or select one of the examples provided.
